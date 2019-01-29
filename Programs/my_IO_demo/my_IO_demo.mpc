@@ -1,0 +1,37 @@
+
+#open_channel(1000)
+# Write some data to file
+#outp = [sint(1), sint(2), sint(3), sint(4)]
+#output_shares(1000,*outp)
+#close_channel(1000)
+
+#a=open_channel(2000)
+#print_ln("Return Value From Open_Channel 2000 = %s",a)
+#open_channel(3000)
+#print_ln("Enter a single share from each player")
+#inp=[sint()]
+#input_shares(2000,*inp)
+#output_shares(3000,*inp)
+#close_channel(2000)
+#close_channel(3000)
+
+open_channel(0)
+open_channel(1)
+open_channel(10)
+open_channel(20)
+
+num_parties=10
+total=cfix(0)
+for i in range(num_parties):
+	print_ln("Player %s, enter a number", i)
+	total = total + sint.get_private_input_from(i)
+
+print_ln("The total now is %s", reveal(total))
+avg=total/num_parties
+print_ln("The average is: %s", avg.reveal())
+
+close_channel(0)
+close_channel(1)
+close_channel(10)
+close_channel(20)
+  
